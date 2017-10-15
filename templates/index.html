@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ColorPalette: ReactJs</title>
+    <script type="text/javascript" src="https://unpkg.com/react@15.3.1/dist/react.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/react-dom@15.3.1/dist/react-dom.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
+</head>
+<style type="text/css">
+    body h2 {
+        font-family: 'sans-serif';
+    }
+
+    #container {
+        padding: 20px;
+    }
+</style>
+<body>
+<h2>ColorPalette</h2>
+<div id="container"></div>
+</body>
+<script type="text/babel">
+
+    var container = document.querySelector('#container');
+
+    var Label = React.createClass({
+        render: function() {
+            var labelStyle = {
+                fontFamily: "sans-serif",
+                padding: "13px",
+                margin: 0
+            };
+            return (
+                <p style={ labelStyle }>{ this.props.color }</p>
+            );
+        }
+    });
+
+    var Square = React.createClass({
+        render: function() {
+            var squareStyle = {
+                height: "150px",
+                backgroundColor: this.props.color
+
+            };
+            return (
+                <div style={ squareStyle }>
+                </div>
+            );
+        }
+    });
+
+    var Card = React.createClass({
+
+        render: function() {
+
+            var cardStyle = {
+                height: "200px",
+                width: "150px",
+                padding: 0,
+                margin: '4px',
+                float: 'left',
+                backgroundColor: "#FFF",
+                WebkitFilter: "drop-shadow(0px 0px 5px #666)",
+                filter: "drop-shadow(0px 0px 3px #666)"
+            };
+
+
+            var colors = ['#db7b2c','#d6641b','#f07826','#516735','#5ea774','#fa5c00','#faf691','#fc3074','#424242','#f0ebed','#d9b43b','#faf2e3','#dfecf0','#ccca37','#5a7385','#c4776e','#c49f95','#5a6069','#bfddde','#f0e8e1','#fff8c4','#47943d','#7836cf','#96d8eb','#ff29ff','#ffee94','#ffd4ff','#fffce1','#b4e6ff','#bf7db5','#ffd9b2','#6c0d6d','#a3dff0','#ffe7ef','#339c09','#d05252','#fff6f6','#ee8c8c','#781f1f','#8d3f3f','#380808','#450000','#470b0b','#c3bfb5','#ebebeb','#fff','#000','#ffcb00','#fcda85','#f6a975','#e16c6c','#dd5f5f','#d85555','#d24d4d','#ce4646','#d8ba94','#d4b58f','#d2b086','#ceab7f','#c9a577','#eed8c2','#e7d2bd','#e5ceb7','#e3c7ab','#e1c4a5','#f6efa2','#f6e6a2','#f6dda2','#f6d5a2','#f6c8a2','#7c00ff','#ab17ff','#db2df0','#ff00ce','#ff00a7','#515151','#474747','#424242','#4f4f4f','#3e3e3e','#ab4d1a','#b5b63e','#396035','#3e321a','#631b1b','#2c3b3e','#29282f','#2e2e3e','#21202b','#191820','#007dc6','#ffc220','#f47321','#367c2b','#004c91','#00534e','#f90','#ffdf55','#0088b2','#810000','#3a1717','#401e1e','#4d402c','#382f21','#201b12','#897231','#944e19','#2f670f','#506846','#5e9093','#a013c4','#3c3047','#d05d5d','#dab5e5','#d5d27c','#db764b','#e4b027','#ad3ad4','#dfe0df','#555755','#db4e23','#f9b520','#8265a1','#09b3da','#2e9059','#d990ec','#fa9dfb','#ffb5e2','#fbc5f8','#ffcef1','#06548a','#033656','#02275a','#deaa96','#41576a','#2c4061','#aeaaa4','#5e574a','#5e6d86','#c6986b','#231f20','#339545','#422732','#c1bbb1','#33354f','#4e4848','#90b845','#6f8b42','#939b8a','#2ca3ae','#b3573e','#d07046','#f17922','#ebbe7d','#b6aea1','#20813c','#15f2f9','#6ccb82','#05563e','#105b7b','#1b5e20','#aa8000','#333','#ddd','#fff','#e41b23','#f57e2e','#009727','#341a07','#a90000','#b52c2d','#f2d4d4','#f5f0f6','#c7b0b8','#84a599','#88d5d2','#e35760','#cccccc','#bbbbbb','#aaaaaa','#fff698','#c8f0a8','#50a35a','#006d7c','#66a6ae','#7fbf7f','#7fbfbf','#a1d66e','#d6a36e','#a18c76','#e2dad4','#bc8e70','#890302','#345a6b','#1e3f49','#87d37c','#fdffff','#f2f1ef','#dddede','#1fb4da']
+
+
+            var colorElements = colors.map(function(color) {
+                return <div style={cardStyle}><Square color={color}/><Label color={color}/></div>;
+            });
+
+            return (
+                <div>
+                    {colorElements}
+                </div>
+            );  
+           
+        }
+    });
+
+    ReactDOM.render(
+        <div>
+            <Card color="#FFA737"/>
+        </div>,
+        container
+    );
+</script>
+</html>
